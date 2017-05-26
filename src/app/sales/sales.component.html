@@ -1,0 +1,68 @@
+
+<div class="container">
+  <h4>Sales Page</h4>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="headercontainer">
+        <div class="tablecontainer">
+          <table id="mytable" class="table-striped">
+            <thead>
+              <tr>
+                <th>
+                  <div>No</div>
+                </th>
+                <th>
+                  Name
+                  <div>Name</div>
+                </th>
+                <th>
+                  <div>Enquiry No</div>
+                </th>
+                <th>
+                  <div>Quotation No</div>
+                </th>
+                <th>
+                  <div>Enquiry Date</div>
+                </th>
+                <th>
+                  <div>Quotation Date</div>
+                </th>
+                <th>
+                  <div>Quotation Type</div>
+                </th>
+                <th>
+                  <div>Salesman</div>
+                </th>
+                <th>
+                  <div>Requested By</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let enq of dd" (click)="selmode($event,enq.rid)" >
+                    <td>{{enq.rid}}</td>
+                    <td>{{enq.nam}}</td>
+                    <td>{{enq.eno}}</td>
+                    <td>{{enq.qno}}</td>
+                    <td>{{enq.edt}}</td>
+                    <td>{{enq.qdt}}</td>
+                    <td>{{enq.qtn}}</td>
+                    <td>{{enq.fnm}}</td>
+                    <td>{{enq.rqn}}</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row columns">
+  <md-input-container>
+   <input mdInput id="message"  placeholder="Type in here..." (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />
+  </md-input-container>
+    <div id="details-container">
+      <md-card *ngFor="let item of items | async"><img src="../../assets/img/pin.png"><b>{{item.message}}</b></md-card>
+    </div>
+</div>
+</div>
+

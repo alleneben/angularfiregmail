@@ -1,0 +1,37 @@
+  <md-toolbar [@flyInBottomFast]="cloudState">
+      FIREBASE/ANGULAR GMAIL LOGIN
+</md-toolbar>
+
+
+
+<div class="container"  >
+  <md-card  [@bounceInBottom]="formState">
+    <img src="assets/img/b.png"  [@fadeIn]="imageState"  class="img-circle" alt="Washed Out">
+    <md-card-header>
+       <div class="col-sm-8 col-sm-offset-2">
+            <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        </div>
+    </md-card-header>
+    <form #f="ngForm" (ngSubmit)="onFormSubmit(f.value)">
+      <div class="form-group">
+        <md-input-container>
+          <input mdInput  [ngModel]="user.unm" name="unm"  placeholder="Username" required>
+        </md-input-container>
+      </div>
+      <div class="form-group">
+        <md-input-container>
+          <input mdInput type="password" [ngModel]="user.pwd"  name="pwd" placeholder="Password" required>
+        </md-input-container>
+      </div>
+      
+      <md-card-actions>
+        <div class="form-group">
+          <button md-raised-button [@fadeIn]="buttonState" [disabled]="!f.valid">LOGIN</button>
+        </div>
+      </md-card-actions>
+    </form>
+    <div class="form-group">
+          <button md-raised-button (click)="loginGoogle()" id="google">Login With Google</button>
+        </div>
+  </md-card>
+</div>

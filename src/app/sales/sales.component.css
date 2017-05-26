@@ -1,0 +1,127 @@
+.sales{
+    margin-top: 5px;
+}
+.sbtn{
+    background-color: #D50000;
+    color: #fff;
+    margin-left: 30px;
+}
+.enqbtn{
+    background-color: #1A237E;
+    color: white;
+}
+/* this is for the main container of the table, also sets the height of the fixed header row */
+.headercontainer {
+  position: relative;
+  border: 2px solid #00796B;
+  padding-top: 37px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 2px;
+  margin-right: 10px;
+}
+/* this is for the data area that is scrollable */
+.tablecontainer {
+  overflow-y: auto;
+  height: 200px;
+  background: #fff;
+}
+
+/* remove default cell borders and ensures table width 100% of its container*/
+.tablecontainer table {
+  border-spacing: 0;
+  width:100%;
+}
+
+/* add a thin border to the left of cells, but not the first */
+.tablecontainer td + td {
+  border-left:1px solid #eee; 
+}
+
+/* cell padding and bottom border */
+.tablecontainer td, th {
+  border-bottom:1px solid #eee;
+  padding: 10px;
+}
+
+/* make the default header height 0 and make text invisible */
+.tablecontainer th {
+    height: 0px;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 0;
+    visibility: hidden;
+    white-space: nowrap;
+}
+
+/* reposition the divs in the header cells and place in the blank area of the headercontainer */
+.tablecontainer th div{
+  visibility: visible;
+  position: absolute;
+  top:0;
+  margin-left: 10px;
+  margin-right: 10px;
+  line-height: normal;
+}
+/* prevent the left border from above appearing in first div header */
+th:first-child div{
+  border: none;
+}
+
+/* alternate colors for rows */
+.tablecontainer tbody  tr:nth-child(even){
+     background-color: #fff;
+}
+
+.tablecontainer td {
+    border: 1px #fff solid; 
+    padding: 5px; 
+    cursor: pointer;
+}
+
+
+.table-striped tbody tr:nth-child(odd) td {
+  background-color: #B2DFDB;
+}
+
+.table-striped tbody tr.highlight td { 
+    background-color: #00796B;
+    color: #fff;
+}
+
+.container{
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+
+input#message {
+    background:#fff;
+    border:none;
+    outline:none;
+    box-shadow:none;
+    font-size:1.6em;
+    font-weight:300;
+}
+
+#details-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-right: 10px;
+}
+
+#details-container md-card{
+    background:#B2DFDB;
+    padding: 1.4em;
+    
+    margin: 12px;
+    widows: auto;
+    min-width: 200px;
+}
+
+img{
+    display: block;
+    margin-bottom: 12px;
+}
