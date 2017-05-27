@@ -1,9 +1,16 @@
 
 <div class="container">
-  <h4>Sales Page</h4>
+  <h4>Authenticated Page</h4>
+  <div class="form-group">
+      <button md-raised-button class="display" (click)="displaytble('tbl')" id="google">Display Table</button>
+      <button md-raised-button class="display" (click)="displaymsgs('msg')" id="google">Display Messages</button>
+      <button md-raised-button class="display" (click)="displayusers('usr')" id="google">Display Users</button>
+      <button md-raised-button class="display" (click)="clear()" id="google">Clear</button>
+      <!--<button md-raised-button class="display" (click)="logout()" id="google">Logout</button>-->
+  </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="headercontainer">
+      <div class="headercontainer" *ngIf="showtbl">
         <div class="tablecontainer">
           <table id="mytable" class="table-striped">
             <thead>
@@ -56,13 +63,44 @@
       </div>
     </div>
   </div>
-  <div class="row columns">
+  <div class="row columns" *ngIf="showmsgform" >
   <md-input-container>
    <input mdInput id="message"  placeholder="Type in here..." (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />
   </md-input-container>
     <div id="details-container">
       <md-card *ngFor="let item of items | async"><img src="../../assets/img/pin.png"><b>{{item.message}}</b></md-card>
     </div>
-</div>
+  </div>
+
+  <div class="row columns" *ngIf="showregform" >
+    <md-card>
+    <form #f="ngForm">
+      <div class="form-group">
+        <md-input-container>
+          <input mdInput  [ngModel]="userdetails.unm" name="unm"  placeholder="Username" required>
+        </md-input-container>
+        <md-input-container>
+          <input mdInput type="password" [ngModel]="userdetails.pwd"  name="pwd" placeholder="Password" required>
+        </md-input-container>
+      </div>
+      
+      <div class="form-group">
+        <md-input-container>
+          <input mdInput  [ngModel]="userdetails.fnm"  name="fnm" placeholder="Firstname" required>
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [ngModel]="userdetails.snm"  name="snm" placeholder="Surname" required>
+        </md-input-container>
+      </div>
+      <md-card-actions>
+        <div class="form-group">
+          <button md-raised-button class="display" (click)="saveusers(f.value)" [disabled]="!f.valid">Save</button>
+        </div>
+      </md-card-actions>
+    </form>
+  </md-card>
+  <div id="details-container">
+      <md-card *ngFor="let usr of users | async"><b>Username: {{usr.snm}} <br/> Firstname: {{usr.fnm}}</b></md-card>
+  </div>
 </div>
 

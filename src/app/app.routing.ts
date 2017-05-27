@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
-import { SalesComponent } from './sales/sales.component';
+import { AuthPageComponent } from './authpage/authpage.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './login/auth.service';
 
 
 
@@ -8,8 +9,8 @@ import { LoginComponent } from './login/login.component';
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path:'login',component:LoginComponent},
-    { path:'sales', component:SalesComponent}
+    { path:'authpage', component:AuthPageComponent, canActivate:[AuthGuard]}
 ];
 
 
-export const routComponents = [LoginComponent,SalesComponent];
+export const routComponents = [LoginComponent,AuthPageComponent];

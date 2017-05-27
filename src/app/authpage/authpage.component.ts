@@ -2,7 +2,7 @@ import {Component,OnInit,Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {AppserviceService} from '../appservice.service';
 import { Observable } from 'rxjs';
-
+import {flyInBottomFast,bounceInBottom,fadeIn} from '../router.animations';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -10,22 +10,37 @@ declare var $: any;
 
 @Component({
 	selector: 'sales-wiz',
-	templateUrl: 'sales.component.html',
-	styleUrls:['sales.component.css']
+	templateUrl: 'authpage.component.html',
+	styleUrls:['authpage.component.css'],
+	animations: [flyInBottomFast(),bounceInBottom(),fadeIn()]
 })
 
-export class SalesComponent implements OnInit{
-
+export class AuthPageComponent implements OnInit{
+	userdetails = {unm: '',pwd: '',snm:'',fnm: ''};
 	sst:any;;
 	obe: Observable<any>;
 	dd:any;
-
-	user: Observable<firebase.User>;
-  	items: FirebaseListObservable<any[]>;
+	cloudState:any='in';
+	formState:any='in';
+	buttonState:any='in';
+	imageState:any='in';
 	msgVal:any;
+	showtbl:any="";
+	showmsgform:any="";
+	showregform:any="";
+
+  	items: FirebaseListObservable<any[]>;
+	users: FirebaseListObservable<any[]>;
+	
 
 	constructor(private router:Router,private ssv: AppserviceService,db: AngularFireDatabase,public af:AngularFireAuth){
 		this.items = db.list('/messages',{
+			query: {
+			limitToLast: 50
+			}
+		});
+
+		this.users = db.list('/users',{
 			query: {
 			limitToLast: 50
 			}
@@ -44,6 +59,20 @@ export class SalesComponent implements OnInit{
 	
 	}
 	
+	displaytble(value){
+		this.showtbl = value;
+	}
+	displaymsgs(value){
+		this.showmsgform = value;
+	}
+	displayusers(value){
+		this.showregform = value;
+	}
+	clear(){
+		this.showregform = '';
+		this.showmsgform = '';
+		this.showtbl = '';
+	}
 	triggerFn(e){
 		let fn = e;
 		if(this[fn]) {
@@ -74,6 +103,10 @@ export class SalesComponent implements OnInit{
     	this.msgVal='';
   	}
 	
+	saveusers(f){
+		this.users.push(f);
+	}
+
 	logout() {
   		this.af.auth.signOut();
 	}

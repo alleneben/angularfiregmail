@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 							console.log('case 0');
 							break;
 						case '1':
-							this.router.navigate(['sales']);
+							this.router.navigate(['authpage']);
 						default:
 							if(out.st && out.sm){
 								console.log('something else came up');
@@ -55,8 +55,7 @@ export class LoginComponent implements OnInit {
     this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then (
       (success) => {
-        this.router.navigate(['sales']);
-        
+        this.router.navigate(['authpage']);
       }
     )
     .catch (
