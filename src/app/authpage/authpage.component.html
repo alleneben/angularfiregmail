@@ -46,7 +46,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let enq of dd" (click)="selmode($event,enq.rid)" >
+              <tr *ngFor="let enq of dd | async" (click)="selmode($event,enq.rid)" >
                     <td>{{enq.rid}}</td>
                     <td>{{enq.nam}}</td>
                     <td>{{enq.eno}}</td>

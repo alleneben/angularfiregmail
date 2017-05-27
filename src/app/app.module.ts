@@ -13,6 +13,7 @@ import { AppserviceService } from './appservice.service';
 import { AuthGuard } from './login/auth.service';
 import { MdButtonModule,MdInputModule, MdCardModule,MdToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { KnustComponent } from './knust/knust.component';
 
 
 export const firebaseConfig = {
@@ -27,7 +28,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    routComponents
+    routComponents,
+    KnustComponent
   ],
   imports: [
     BrowserModule,
